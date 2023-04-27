@@ -19,7 +19,7 @@ describe('AppComponent', () => {
   it(`should have as title 'angular-and-ngrx-demo-app'`, waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-ang-ngrx-demo-app');
+    expect(app.title).toEqual('angular-and-ngrx-demo-app');
   }));
 
   it('should render title in an h1 tag', waitForAsync(() => {
