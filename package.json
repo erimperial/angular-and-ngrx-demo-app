@@ -20,6 +20,7 @@
     "@angular/router": "^14.0.0",
     "@davinkevin/jest": "^0.1.0",
     "@ngrx/store": "14.0.0",
+    "@ngrx/store-devtools": "14.0.0",
     "jest-junit": "14.0.0",
     "rxjs": "~7.5.0",
     "ts-jest": "^29.1.0",

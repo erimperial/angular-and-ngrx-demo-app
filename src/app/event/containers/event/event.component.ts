@@ -3,6 +3,11 @@ import { Attendee } from 'src/app/models';
 import { EventService } from '../../services/event.service';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
+import { appState } from 'src/app/state/state';
+import {
+  StartSpinner,
+  StopSpinner,
+} from 'src/app/state/spinner/spinner.actions';
 
 @Component({
   selector: 'app-event',
@@ -13,7 +18,10 @@ export class EventComponent implements OnInit {
   spinner$: Observable<boolean> | undefined;
   attendees$: Observable<Attendee[]> | undefined;
 
-  constructor(private store: Store<any>, private eventService: EventService) {}
+  constructor(
+    private store: Store<appState>,
+    private eventService: EventService
+  ) {}
 
   ngOnInit(): void {
     this.getAttendees();
@@ -25,9 +33,9 @@ export class EventComponent implements OnInit {
   }
 
   addAttendee(attendee: Attendee) {
-    this.store.dispatch({ type: 'startSpinner' });
+    this.store.dispatch(new StartSpinner());
     this.eventService.addAttendee(attendee).subscribe(() => {
-      this.store.dispatch({ type: 'stopSpinner' });
+      this.store.dispatch(new StopSpinner());
       this.getAttendees();
     });
   }
